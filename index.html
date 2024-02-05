@@ -1,0 +1,34 @@
+<script>
+
+    function getComputerChoice()
+    {
+        let choice = ["Rock","Paper","Scissors"];
+        return choice[Math.floor(Math.random() * 3)];
+    }
+
+    function playRound(playerSelection,computerSelection)
+    {
+        playerSelection = playerSelection.toLowerCase();
+        computerSelection = computerSelection.toLowerCase();
+  
+        let rules = 
+        {
+            'rock': {'rock': 'tie, no one wins', 'scissors': 'you won the match','paper': 'you lose the match'},
+            'paper': {'rock': 'you won the match', 'scissors': 'you lose the match','paper': 'tie, no one wins'},
+            'scissors': {'rock': 'you lose the match', 'scissors': 'tie, no one wins','paper': 'you won the match'}
+        }
+
+        let winner = rules[playerSelection][computerSelection];
+        return winner;
+    }
+
+    function playGame()
+    {
+        for(let i = 0; i < 5; i++)
+        {
+            let playerChoice = prompt("enter your choice");
+            let winner = playRound(playerChoice,getComputerChoice());
+            console.log(winner);
+        }
+    }
+</script>
